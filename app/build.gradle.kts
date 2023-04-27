@@ -102,4 +102,9 @@ dependencies {
 
     //splash api
     implementation ("androidx.core:core-splashscreen:1.0.0")
+
+    //pagination
+    //paging
+    implementation ("androidx.paging:paging-compose:1.0.0-alpha18")
+    implementation ("androidx.paging:paging-runtime-ktx:3.1.1")
 }
