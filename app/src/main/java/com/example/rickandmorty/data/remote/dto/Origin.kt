@@ -1,4 +1,4 @@
-package com.example.rickandmorty.data.dto
+package com.example.rickandmorty.data.remote.dto
 
 data class Origin(
     val name: String,

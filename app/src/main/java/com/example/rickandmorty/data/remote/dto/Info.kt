@@ -1,4 +1,4 @@
-package com.example.rickandmorty.data.dto
+package com.example.rickandmorty.data.remote.dto
 
 data class Info(
     val count: Int,
