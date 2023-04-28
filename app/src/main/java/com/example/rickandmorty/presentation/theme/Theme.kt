@@ -1,4 +1,4 @@
-package com.example.rickandmorty.ui.theme
+package com.example.rickandmorty.presentation.theme
 
 import android.app.Activity
 import android.os.Build
