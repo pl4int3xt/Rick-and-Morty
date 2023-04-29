@@ -39,8 +39,7 @@ class CharactersViewModel @Inject constructor(
             }
             is CharactersScreenEvents.OnNavigateToCharacterDetails -> {
                 viewModelScope.launch {
-                    _uiEvents.emit(UiEvents.OnNavigate(Screens.CharacterDetails.route
-                            + "/${charactersScreenEvents.id}"))
+                    _uiEvents.emit(UiEvents.OnNavigate(Screens.CharacterDetails.route + "/${charactersScreenEvents.id}"))
                 }
             }
         }
