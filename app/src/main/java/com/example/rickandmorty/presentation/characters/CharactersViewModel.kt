@@ -19,7 +19,7 @@ import javax.inject.Inject
 class CharactersViewModel @Inject constructor(
     private val getAllCharactersUseCase: GetAllCharactersUseCase
 ): ViewModel() {
-    init {
-        val characters = getAllCharactersUseCase().cachedIn(viewModelScope)
-    }
+    fun getAllCharacters(): Flow<PagingData<CharacterModel>> =
+        getAllCharactersUseCase().cachedIn(viewModelScope)
+
 }

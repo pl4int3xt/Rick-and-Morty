@@ -12,8 +12,12 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.lazy.staggeredgrid.LazyVerticalStaggeredGrid
 import androidx.compose.foundation.lazy.staggeredgrid.StaggeredGridCells
 import androidx.compose.foundation.lazy.staggeredgrid.items
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Refresh
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -30,9 +34,10 @@ import com.example.rickandmorty.domain.model.CharacterModel
 import kotlin.random.Random
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
-@OptIn(ExperimentalMaterial3Api::class, ExperimentalFoundationApi::class)
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharactersScreen(
+    getAllCharacters: () -> Unit,
     characters: LazyPagingItems<CharacterModel>
 ) {
     val context = LocalContext.current
@@ -48,30 +53,43 @@ fun CharactersScreen(
 
     Scaffold {
         Box(modifier = Modifier.fillMaxSize()){
-            if (characters.loadState.refresh is LoadState.Loading){
-                CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-            }else{
-                LazyColumn(
-                    modifier = Modifier.fillMaxSize(),
-                    contentPadding = PaddingValues(16.dp),
-                    verticalArrangement = Arrangement.spacedBy(16.dp)
-                ){
-                    items(characters){ character ->
-                        if (character!=null){
-                            SingleItem(
-                                item = ListItem(
-                                    height = Random.nextInt(100, 300).dp,
-                                    color = Color(
-                                        Random.nextLong(0xFFFFFFFF)
-                                    ).copy(alpha = 1f),
-                                ),
-                                imageUrl = character.image,
-                                name = character.name)
-                        }
+            when (characters.loadState.refresh) {
+                is LoadState.Loading -> {
+                    CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
+                }
+
+                is LoadState.Error -> {
+                    IconButton(
+                        modifier = Modifier.align(Alignment.Center),
+                        onClick = { getAllCharacters() }) {
+                        Icon(imageVector = Icons.Rounded.Refresh,
+                            contentDescription = "refresh")
                     }
-                    item {
-                        if (characters.loadState.append is LoadState.Loading){
-                            CircularProgressIndicator()
+                }
+
+                else -> {
+                    LazyColumn(
+                        modifier = Modifier.fillMaxSize(),
+                        contentPadding = PaddingValues(16.dp),
+                        verticalArrangement = Arrangement.spacedBy(16.dp)
+                    ){
+                        items(characters){ character ->
+                            if (character!=null){
+                                SingleItem(
+                                    item = ListItem(
+                                        height = Random.nextInt(100, 300).dp,
+                                        color = Color(
+                                            Random.nextLong(0xFFFFFFFF)
+                                        ).copy(alpha = 1f),
+                                    ),
+                                    imageUrl = character.image,
+                                    name = character.name)
+                            }
+                        }
+                        item {
+                            if (characters.loadState.append is LoadState.Loading){
+                                CircularProgressIndicator()
+                            }
                         }
                     }
                 }

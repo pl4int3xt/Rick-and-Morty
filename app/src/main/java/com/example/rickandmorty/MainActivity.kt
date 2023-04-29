@@ -17,8 +17,11 @@ class MainActivity : ComponentActivity() {
         setContent {
             RickAndMortyTheme {
                 val viewModel = viewModel<CharactersViewModel>()
-                val characters = viewModel.characters.collectAsLazyPagingItems()
-                CharactersScreen(characters = characters)
+                val characters = viewModel.getAllCharacters().collectAsLazyPagingItems()
+                CharactersScreen(
+                    getAllCharacters = { viewModel.getAllCharacters() },
+                    characters = characters
+                )
             }
         }
     }
