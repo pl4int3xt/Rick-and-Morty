@@ -35,8 +35,7 @@ import kotlin.random.Random
 @Composable
 fun CharactersScreen(
     onEvent: (CharactersScreenEvents) -> Unit,
-    characters: LazyPagingItems<CharacterModel>,
-    viewModel: CharactersViewModel = hiltViewModel()
+    characters: LazyPagingItems<CharacterModel>
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = characters.loadState){
@@ -59,7 +58,7 @@ fun CharactersScreen(
                 is LoadState.Error -> {
                     IconButton(
                         modifier = Modifier.align(Alignment.Center),
-                        onClick = { viewModel.onEvent(CharactersScreenEvents.OnRefreshClicked) }) {
+                        onClick = { onEvent(CharactersScreenEvents.OnRefreshClicked) }) {
                         Icon(imageVector = Icons.Rounded.Refresh,
                             contentDescription = "refresh")
                     }
