@@ -34,10 +34,9 @@ class CharactersViewModel @Inject constructor(
 
     fun onEvent(charactersScreenEvents: CharactersScreenEvents){
         when(charactersScreenEvents){
-            CharactersScreenEvents.OnRefreshClicked -> {
+            is CharactersScreenEvents.OnRefreshClicked -> {
                 getAllCharacters()
             }
-
             is CharactersScreenEvents.OnNavigateToCharacterDetails -> {
                 viewModelScope.launch {
                     _uiEvents.emit(UiEvents.OnNavigate(Screens.CharacterDetails.route
@@ -46,5 +45,4 @@ class CharactersViewModel @Inject constructor(
             }
         }
     }
-
 }
