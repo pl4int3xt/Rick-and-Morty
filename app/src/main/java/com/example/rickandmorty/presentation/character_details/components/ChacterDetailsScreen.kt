@@ -3,6 +3,8 @@ package com.example.rickandmorty.presentation.character_details.components
 import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.CircularProgressIndicator
@@ -35,9 +37,13 @@ fun CharacterDetailsScreen(
             }
 
             state.characterDetails?.let {
-                Column(modifier = Modifier.verticalScroll(rememberScrollState())) {
-                    Image(imageUrl = it.image, name = it.name, origin = it.origin.name)
-                    Details(characterModel = it)
+                LazyColumn(modifier = Modifier.fillMaxSize()){
+                    item {
+                        Image(imageUrl = it.image, name = it.name, origin = it.origin.name)
+                    }
+                    item {
+                        Details(characterModel = it)
+                    }
                 }
             }
         }

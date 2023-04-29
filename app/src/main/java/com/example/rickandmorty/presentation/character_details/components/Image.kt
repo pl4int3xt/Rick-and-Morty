@@ -24,12 +24,12 @@ fun Image(
     Column(
         modifier = Modifier.fillMaxSize()
             .fillMaxWidth()
-            .clip(RoundedCornerShape(20.dp))
+            .clip(RoundedCornerShape(30.dp))
     ) {
         AsyncImage(
             modifier = Modifier.fillMaxWidth()
-                .height(700.dp)
-                .clip(RoundedCornerShape(topEnd = 20.dp, topStart = 20.dp))
+                .fillMaxHeight(0.9f)
+                .clip(RoundedCornerShape(topEnd = 30.dp, topStart = 30.dp))
             ,
             model = imageUrl,
             contentScale = ContentScale.Crop,
