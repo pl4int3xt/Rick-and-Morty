@@ -22,4 +22,16 @@ class CharactersViewModel @Inject constructor(
     fun getAllCharacters(): Flow<PagingData<CharacterModel>> =
         getAllCharactersUseCase().cachedIn(viewModelScope)
 
+    fun onEvent(charactersScreenEvents: CharactersScreenEvents){
+        when(charactersScreenEvents){
+            CharactersScreenEvents.OnRefreshClicked -> {
+                getAllCharacters()
+            }
+
+            is CharactersScreenEvents.OnNavigateToCharacterDetails -> {
+
+            }
+        }
+    }
+
 }

@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
                 val viewModel = viewModel<CharactersViewModel>()
                 val characters = viewModel.getAllCharacters().collectAsLazyPagingItems()
                 CharactersScreen(
-                    getAllCharacters = { viewModel.getAllCharacters() },
+                    onEvent = viewModel::onEvent,
                     characters = characters
                 )
             }

@@ -25,13 +25,14 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.example.rickandmorty.domain.model.CharacterModel
+import com.example.rickandmorty.presentation.characters.CharactersScreenEvents
 import kotlin.random.Random
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharactersScreen(
-    getAllCharacters: () -> Unit,
+    onEvent: (CharactersScreenEvents) -> Unit,
     characters: LazyPagingItems<CharacterModel>
 ) {
     val context = LocalContext.current
@@ -55,7 +56,7 @@ fun CharactersScreen(
                 is LoadState.Error -> {
                     IconButton(
                         modifier = Modifier.align(Alignment.Center),
-                        onClick = { getAllCharacters() }) {
+                        onClick = { onEvent(CharactersScreenEvents.OnRefreshClicked) }) {
                         Icon(imageVector = Icons.Rounded.Refresh,
                             contentDescription = "refresh")
                     }
