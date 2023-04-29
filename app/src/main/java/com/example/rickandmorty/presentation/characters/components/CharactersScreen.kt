@@ -21,11 +21,13 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.example.rickandmorty.domain.model.CharacterModel
 import com.example.rickandmorty.presentation.characters.CharactersScreenEvents
+import com.example.rickandmorty.presentation.characters.CharactersViewModel
 import kotlin.random.Random
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
@@ -33,7 +35,8 @@ import kotlin.random.Random
 @Composable
 fun CharactersScreen(
     onEvent: (CharactersScreenEvents) -> Unit,
-    characters: LazyPagingItems<CharacterModel>
+    characters: LazyPagingItems<CharacterModel>,
+    viewModel: CharactersViewModel = hiltViewModel()
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = characters.loadState){
@@ -56,7 +59,7 @@ fun CharactersScreen(
                 is LoadState.Error -> {
                     IconButton(
                         modifier = Modifier.align(Alignment.Center),
-                        onClick = { onEvent(CharactersScreenEvents.OnRefreshClicked) }) {
+                        onClick = { viewModel.onEvent(CharactersScreenEvents.OnRefreshClicked) }) {
                         Icon(imageVector = Icons.Rounded.Refresh,
                             contentDescription = "refresh")
                     }
