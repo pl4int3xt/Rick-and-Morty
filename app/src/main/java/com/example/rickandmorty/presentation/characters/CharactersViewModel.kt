@@ -19,6 +19,7 @@ import javax.inject.Inject
 class CharactersViewModel @Inject constructor(
     private val getAllCharactersUseCase: GetAllCharactersUseCase
 ): ViewModel() {
-
-    val characters = getAllCharactersUseCase().cachedIn(viewModelScope)
+    init {
+        val characters = getAllCharactersUseCase().cachedIn(viewModelScope)
+    }
 }
