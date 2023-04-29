@@ -23,8 +23,11 @@ fun MainNavGraph(
     ){
         composable(Screens.CharactersScreen.route){
             val viewModel: CharactersViewModel = hiltViewModel()
+            val uiEvents = viewModel.uiEvents
             val characters = viewModel.getAllCharacters().collectAsLazyPagingItems()
             CharactersScreen(
+                onNavigate = { navHostController.navigate(it.route)},
+                uiEvents = uiEvents,
                 onEvent = viewModel::onEvent,
                 characters = characters
             )

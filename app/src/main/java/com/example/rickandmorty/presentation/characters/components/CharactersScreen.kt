@@ -28,16 +28,31 @@ import androidx.paging.compose.items
 import com.example.rickandmorty.domain.model.CharacterModel
 import com.example.rickandmorty.presentation.characters.CharactersScreenEvents
 import com.example.rickandmorty.presentation.characters.CharactersViewModel
+import com.example.rickandmorty.presentation.uiEvents.UiEvents
+import kotlinx.coroutines.flow.SharedFlow
+import kotlinx.coroutines.flow.collectLatest
 import kotlin.random.Random
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun CharactersScreen(
+    onNavigate: (UiEvents.OnNavigate) -> Unit,
+    uiEvents: SharedFlow<UiEvents>,
     onEvent: (CharactersScreenEvents) -> Unit,
-    characters: LazyPagingItems<CharacterModel>
+    characters: LazyPagingItems<CharacterModel>,
 ) {
     val context = LocalContext.current
+    LaunchedEffect(key1 = true){
+        uiEvents.collectLatest { event ->
+            when(event){
+                is UiEvents.OnNavigate -> {
+                    onNavigate(event)
+                }
+                else -> Unit
+            }
+        }
+    }
     LaunchedEffect(key1 = characters.loadState){
         if (characters.loadState.refresh is LoadState.Error){
             Toast.makeText(
