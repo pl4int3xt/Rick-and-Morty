@@ -1,6 +1,7 @@
 package com.example.rickandmorty.presentation.characters.components
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -15,12 +16,14 @@ import coil.compose.AsyncImage
 fun SingleItem(
     item: ListItem,
     imageUrl: String,
-    name: String
+    name: String,
+    onClick: () -> Unit
 ) {
     Box(
         modifier = Modifier.height(item.height)
             .clip(RoundedCornerShape(16.dp))
             .background(color = item.color)
+            .clickable { onClick() }
     ){
         AsyncImage(
             modifier = Modifier.height(item.height)
