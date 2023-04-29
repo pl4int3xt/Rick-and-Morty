@@ -3,10 +3,8 @@ package com.example.rickandmorty
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.lifecycle.viewmodel.compose.viewModel
-import androidx.paging.compose.collectAsLazyPagingItems
-import com.example.rickandmorty.presentation.characters.components.CharactersScreen
-import com.example.rickandmorty.presentation.characters.CharactersViewModel
+import androidx.navigation.compose.rememberNavController
+import com.example.rickandmorty.presentation.navigation.MainNavGraph
 import com.example.rickandmorty.presentation.theme.RickAndMortyTheme
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -16,12 +14,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             RickAndMortyTheme {
-                val viewModel = viewModel<CharactersViewModel>()
-                val characters = viewModel.getAllCharacters().collectAsLazyPagingItems()
-                CharactersScreen(
-                    onEvent = viewModel::onEvent,
-                    characters = characters
-                )
+                MainNavGraph(navHostController = rememberNavController())
             }
         }
     }
