@@ -1,6 +1,6 @@
-package com.example.rickandmorty.domain.model
+package com.example.rickandmorty.data.remote.dto
 
-data class LocationModel(
+data class LocationDto(
     val created: String,
     val dimension: String,
     val id: Int,
