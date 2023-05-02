@@ -1,6 +1,10 @@
 package com.example.rickandmorty.data.remote.api
 
 import com.example.rickandmorty.data.remote.dto.CharacterDto
+import com.example.rickandmorty.data.remote.dto.EpisodeDto
+import com.example.rickandmorty.data.remote.dto.EpisodeResult
+import com.example.rickandmorty.data.remote.dto.LocationDto
+import com.example.rickandmorty.data.remote.dto.LocationResult
 import com.example.rickandmorty.data.remote.dto.Result
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,20 +25,20 @@ interface RickAndMortyApi {
     @GET("episode")
     suspend fun getAllEpisodes(
         @Query("page") page: Int
-    ): Result
+    ): EpisodeResult
 
     @GET("episode/{id}")
     suspend fun getEpisodeDetails(
         @Path("id") id: Int
-    ): Result
+    ): EpisodeDto
 
     @GET("location")
     suspend fun getAllLocations(
         @Query("page") page: Int
-    ): Result
+    ): LocationResult
 
     @GET("location/{id}")
     suspend fun getLocationDetails(
         @Path("id") id: Int
-    ): Result
+    ): LocationDto
 }
