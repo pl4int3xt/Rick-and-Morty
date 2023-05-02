@@ -17,4 +17,24 @@ interface RickAndMortyApi {
     suspend fun getCharacterDetails(
         @Path("id") id: Int
     ): CharacterDto
+
+    @GET("episode")
+    suspend fun getAllEpisodes(
+        @Query("page") page: Int
+    ): Result
+
+    @GET("episode/{id}")
+    suspend fun getEpisodeDetails(
+        @Path("id") id: Int
+    ): Result
+
+    @GET("location")
+    suspend fun getAllLocations(
+        @Query("page") page: Int
+    ): Result
+
+    @GET("location/{id}")
+    suspend fun getLocationDetails(
+        @Path("id") id: Int
+    ): Result
 }
