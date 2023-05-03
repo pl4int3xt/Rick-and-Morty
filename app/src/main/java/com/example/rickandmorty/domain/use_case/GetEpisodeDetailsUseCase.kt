@@ -2,6 +2,7 @@ package com.example.rickandmorty.domain.use_case
 
 import com.example.rickandmorty.common.Resource
 import com.example.rickandmorty.data.mappers.toCharacterModel
+import com.example.rickandmorty.data.mappers.toEpisodeModel
 import com.example.rickandmorty.domain.model.CharacterModel
 import com.example.rickandmorty.domain.model.EpisodeModel
 import com.example.rickandmorty.domain.repository.Repository
@@ -17,8 +18,8 @@ class GetEpisodeDetailsUseCase @Inject constructor(
     operator fun invoke(id: Int): Flow<Resource<EpisodeModel>> = flow {
         try {
             emit(Resource.Loading())
-            val episodeDetails = repository.getEpisodeDetails(id)
-            emit(Resource.Success(characterDetails))
+            val episodeDetails = repository.getEpisodeDetails(id).toEpisodeModel()
+            emit(Resource.Success(episodeDetails))
         } catch (e: HttpException){
             emit(Resource.Error(e.localizedMessage?:"unknown error occurred"))
         } catch (e: IOException){
