@@ -1,23 +1,30 @@
 package com.example.rickandmorty.domain.use_case
 
-import androidx.paging.Pager
-import androidx.paging.PagingData
-import androidx.paging.map
-import com.example.rickandmorty.data.mappers.toCharacterModel
+import androidx.paging.PagingSource
+import androidx.paging.PagingState
 import com.example.rickandmorty.data.remote.dto.CharacterDto
-import com.example.rickandmorty.domain.model.CharacterModel
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.map
+import com.example.rickandmorty.domain.repository.Repository
 import javax.inject.Inject
 
 class GetAllCharactersUseCase @Inject constructor(
-    private val pager: Pager<Int, CharacterDto>
-) {
-    operator fun invoke(): Flow<PagingData<CharacterModel>>{
-        return pager
-            .flow
-            .map { pagingData ->
-                pagingData.map { it.toCharacterModel() }
-            }
+    private val repository: Repository
+): PagingSource<Int, CharacterDto>() {
+    override fun getRefreshKey(state: PagingState<Int, CharacterDto>): Int? {
+        return null
+    }
+
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, CharacterDto> {
+        return try {
+            val currentPage = params.key ?: 1
+            val response = repository.getAllCharacters(currentPage)
+            val data = response.results
+            LoadResult.Page(
+                data = data,
+                prevKey = if (currentPage == 1) null else -1,
+                nextKey = currentPage.plus(1)
+            )
+        } catch (e: Exception){
+            LoadResult.Error(e)
+        }
     }
 }

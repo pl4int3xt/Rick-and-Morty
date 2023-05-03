@@ -1,22 +1,22 @@
-package com.example.rickandmorty.data.data_sources
+package com.example.rickandmorty.domain.use_case
 
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
-import com.example.rickandmorty.data.remote.dto.LocationDto
+import com.example.rickandmorty.data.remote.dto.EpisodeDto
 import com.example.rickandmorty.domain.repository.Repository
 import javax.inject.Inject
 
-class GetAllLocationsDataSource @Inject constructor(
+class GetAllEpisodesUseCase @Inject constructor(
     private val repository: Repository
-): PagingSource<Int, LocationDto>() {
-    override fun getRefreshKey(state: PagingState<Int, LocationDto>): Int? {
+): PagingSource<Int, EpisodeDto>(){
+    override fun getRefreshKey(state: PagingState<Int, EpisodeDto>): Int? {
         return null
     }
 
-    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, LocationDto> {
+    override suspend fun load(params: LoadParams<Int>): LoadResult<Int, EpisodeDto> {
         return try {
-            val currentPage = params.key?:1
-            val response = repository.getAllLocations(currentPage)
+            val currentPage = params.key ?: 1
+            val response = repository.getAllEpisodes(currentPage)
             LoadResult.Page(
                 data = response.results,
                 prevKey = if (currentPage == 1) null else -1,
