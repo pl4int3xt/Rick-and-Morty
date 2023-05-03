@@ -24,9 +24,15 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
-    private val pager: Pager<Int, CharacterDto>
+    pager: Pager<Int, CharacterDto>
 ): ViewModel() {
 
+    val pagingFlow = pager
+        .flow
+        .map { pagingData ->
+            pagingData.map { it.toCharacterModel() }
+        }
+        .cachedIn(viewModelScope)
 
     private val _uiEvents = MutableSharedFlow<UiEvents>()
     val uiEvents = _uiEvents.asSharedFlow()
