@@ -1,4 +1,6 @@
 package com.example.rickandmorty.presentation.episodes
 
-class EpisodesScreenEvents {
+sealed class EpisodesScreenEvents {
+    data class OnEpisodeClicked(val id: Int): EpisodesScreenEvents()
+    object OnPopBackStack: EpisodesScreenEvents()
 }
