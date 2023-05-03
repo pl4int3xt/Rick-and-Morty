@@ -37,6 +37,9 @@ class CharactersViewModel @Inject constructor(
     private val _uiEvents = MutableSharedFlow<UiEvents>()
     val uiEvents = _uiEvents.asSharedFlow()
 
+    private fun getAllCharacters(){
+
+    }
     fun onEvent(charactersScreenEvents: CharactersScreenEvents){
         when(charactersScreenEvents){
             is CharactersScreenEvents.OnRefreshClicked -> {
