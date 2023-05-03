@@ -16,7 +16,7 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 class EpisodesScreenViewModel @Inject constructor(
-    private val pager: Pager<Int, EpisodeDto>
+    pager: Pager<Int, EpisodeDto>
 ): ViewModel() {
     val episodes = pager
         .flow
