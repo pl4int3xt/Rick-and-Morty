@@ -3,7 +3,7 @@ package com.example.rickandmorty.di
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.example.rickandmorty.common.Constants
-import com.example.rickandmorty.data.RickAndMortyDataSource
+import com.example.rickandmorty.data.data_sources.GetAllCharactersDataSource
 import com.example.rickandmorty.data.remote.api.RickAndMortyApi
 import com.example.rickandmorty.data.remote.dto.CharacterDto
 import com.example.rickandmorty.data.remote.repository.RepositoryImpl
@@ -41,7 +41,7 @@ object AppModule {
     fun providePager(repository: Repository): Pager<Int, CharacterDto>{
         return Pager(
             config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { RickAndMortyDataSource(repository)}
+            pagingSourceFactory = { GetAllCharactersDataSource(repository) }
         )
     }
 }
