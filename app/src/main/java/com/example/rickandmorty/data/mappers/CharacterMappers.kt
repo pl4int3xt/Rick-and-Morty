@@ -2,8 +2,10 @@ package com.example.rickandmorty.data.mappers
 
 import com.example.rickandmorty.data.remote.dto.CharacterDto
 import com.example.rickandmorty.data.remote.dto.EpisodeDto
+import com.example.rickandmorty.data.remote.dto.LocationDto
 import com.example.rickandmorty.domain.model.CharacterModel
 import com.example.rickandmorty.domain.model.EpisodeModel
+import com.example.rickandmorty.domain.model.LocationModel
 
 fun CharacterDto.toCharacterModel(): CharacterModel{
     return CharacterModel(
@@ -30,6 +32,18 @@ fun EpisodeDto.toEpisodeModel(): EpisodeModel{
         episode = episode,
         id = id,
         name = name,
+        url = url
+    )
+}
+
+fun LocationDto.toLocationModel(): LocationModel{
+    return LocationModel(
+        created = created,
+        dimension = dimension,
+        id = id,
+        name = name,
+        residents = residents,
+        type = type,
         url = url
     )
 }
