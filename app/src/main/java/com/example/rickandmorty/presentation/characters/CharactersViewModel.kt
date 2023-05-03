@@ -30,7 +30,7 @@ class CharactersViewModel @Inject constructor(
     private val _uiEvents = MutableSharedFlow<UiEvents>()
     val uiEvents = _uiEvents.asSharedFlow()
     fun getAllCharacters(): Flow<PagingData<CharacterModel>> =
-        getAllCharactersUseCase().cachedIn(viewModelScope)
+        getAllCharactersUseCase(
 
     fun onEvent(charactersScreenEvents: CharactersScreenEvents){
         when(charactersScreenEvents){

@@ -6,8 +6,14 @@ import com.example.rickandmorty.common.Constants
 import com.example.rickandmorty.data.data_sources.GetAllCharactersDataSource
 import com.example.rickandmorty.data.remote.api.RickAndMortyApi
 import com.example.rickandmorty.data.remote.dto.CharacterDto
+import com.example.rickandmorty.data.remote.dto.EpisodeDto
+import com.example.rickandmorty.data.remote.dto.LocationDto
 import com.example.rickandmorty.data.remote.repository.RepositoryImpl
+import com.example.rickandmorty.domain.model.EpisodeModel
 import com.example.rickandmorty.domain.repository.Repository
+import com.example.rickandmorty.domain.use_case.GetAllCharactersUseCase
+import com.example.rickandmorty.domain.use_case.GetAllEpisodesUseCase
+import com.example.rickandmorty.domain.use_case.GetAllLocationsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -38,10 +44,32 @@ object AppModule {
 
     @Singleton
     @Provides
-    fun providePager(repository: Repository): Pager<Int, CharacterDto>{
+    fun provideCharactersPager(repository: Repository): Pager<Int, CharacterDto>{
         return Pager(
             config = PagingConfig(pageSize = 20),
-            pagingSourceFactory = { GetAllCharactersDataSource(repository) }
+            pagingSourceFactory = {
+                GetAllCharactersUseCase(repository)
+            }
+        )
+    }
+    @Singleton
+    @Provides
+    fun provideEpisodesPager(repository: Repository): Pager<Int, EpisodeDto>{
+        return Pager(
+            config = PagingConfig(pageSize = 20),
+            pagingSourceFactory = {
+                GetAllEpisodesUseCase(repository)
+            }
+        )
+    }
+    @Singleton
+    @Provides
+    fun provideLocationsPager(repository: Repository): Pager<Int, LocationDto>{
+        return Pager(
+            config = PagingConfig(pageSize = 20),
+            pagingSourceFactory = {
+                GetAllLocationsUseCase(repository)
+            }
         )
     }
 }
