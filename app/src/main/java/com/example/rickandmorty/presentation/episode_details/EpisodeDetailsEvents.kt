@@ -1,4 +1,6 @@
 package com.example.rickandmorty.presentation.episode_details
 
-class EpisodeDetailsEvents {
+sealed class EpisodeDetailsEvents {
+    object OnPopBackStack: EpisodeDetailsEvents()
+    object OnRefresh: EpisodeDetailsEvents()
 }
