@@ -3,13 +3,11 @@ package com.example.rickandmorty.di
 import androidx.paging.Pager
 import androidx.paging.PagingConfig
 import com.example.rickandmorty.common.Constants
-import com.example.rickandmorty.data.data_sources.GetAllCharactersDataSource
 import com.example.rickandmorty.data.remote.api.RickAndMortyApi
 import com.example.rickandmorty.data.remote.dto.CharacterDto
 import com.example.rickandmorty.data.remote.dto.EpisodeDto
 import com.example.rickandmorty.data.remote.dto.LocationDto
 import com.example.rickandmorty.data.remote.repository.RepositoryImpl
-import com.example.rickandmorty.domain.model.EpisodeModel
 import com.example.rickandmorty.domain.repository.Repository
 import com.example.rickandmorty.domain.use_case.GetAllCharactersUseCase
 import com.example.rickandmorty.domain.use_case.GetAllEpisodesUseCase

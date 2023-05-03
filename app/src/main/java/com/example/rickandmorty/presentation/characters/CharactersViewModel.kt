@@ -24,13 +24,12 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CharactersViewModel @Inject constructor(
-    private val getAllCharactersUseCase: GetAllCharactersUseCase
+    private val pager: Pager<Int, CharacterDto>
 ): ViewModel() {
+
 
     private val _uiEvents = MutableSharedFlow<UiEvents>()
     val uiEvents = _uiEvents.asSharedFlow()
-    fun getAllCharacters(): Flow<PagingData<CharacterModel>> =
-        getAllCharactersUseCase(
 
     fun onEvent(charactersScreenEvents: CharactersScreenEvents){
         when(charactersScreenEvents){
