@@ -92,7 +92,7 @@ fun CharactersScreen(
                                     item = ListItem(
                                         color = Color(
                                             Random.nextLong(0xFFFFFFFF)
-                                        ).copy(alpha = 1f),
+                                        ),
                                     ),
                                     imageUrl = character.image,
                                     name = character.name)
