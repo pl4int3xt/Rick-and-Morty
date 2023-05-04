@@ -28,6 +28,7 @@ import coil.compose.AsyncImage
 
 @Composable
 fun SingleItem(
+    isCharacters: Boolean? = false,
     item: ListItem,
     imageUrl: String? = null,
     name: String,
@@ -40,22 +41,33 @@ fun SingleItem(
             .clip(RoundedCornerShape(16.dp))
             .background(color = item.color)
             .clickable { onClick() },
-        contentAlignment = Alignment.BottomCenter
+        contentAlignment = Alignment.Center
     ){
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.SpaceBetween
-        ) {
-            AsyncImage(
-                modifier = Modifier.fillMaxWidth(0.5f)
-                    .fillMaxHeight(),
-                model = imageUrl,
-                contentScale = ContentScale.Crop,
-                contentDescription = name,
-            )
+        if (isCharacters == true){
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                AsyncImage(
+                    modifier = Modifier.fillMaxWidth(0.5f)
+                        .fillMaxHeight(),
+                    model = imageUrl,
+                    contentScale = ContentScale.Crop,
+                    contentDescription = name,
+                )
+                Text(
+                    modifier = Modifier
+                        .padding(16.dp),
+                    text = name,
+                    fontWeight = FontWeight.Bold,
+                    fontSize = 25.sp,
+                )
+            }
+        } else {
             Text(
                 modifier = Modifier
-                    .padding(16.dp),
+                    .padding(16.dp)
+                    .fillMaxSize(),
                 text = name,
                 fontWeight = FontWeight.Bold,
                 fontSize = 25.sp,
