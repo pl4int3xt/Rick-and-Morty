@@ -25,12 +25,12 @@ fun CharacterDetailsScreen(
         Box {
             if (state.isLoading){
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                return@Box
+
             }
 
             if (state.error.isNotEmpty()){
                 Text(text = state.error)
-                return@Box
+
             }
 
             state.characterDetails?.let {
