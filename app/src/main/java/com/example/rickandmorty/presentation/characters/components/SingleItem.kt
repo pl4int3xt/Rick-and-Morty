@@ -17,6 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.AsyncImage
@@ -30,7 +31,7 @@ fun SingleItem(
 ) {
     Box(
         modifier = Modifier
-            .height(350.dp)
+            .height(300.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(color = item.color)
             .clickable { onClick() },
@@ -45,9 +46,11 @@ fun SingleItem(
         Text(
             modifier = Modifier.fillMaxWidth()
                 .padding(16.dp)
-                .background(color = Color.White),
+                .background(color = Color.White)
+                .clip(RoundedCornerShape(16.dp)),
             text = name,
-            fontSize = 30.sp,
+            fontWeight = FontWeight.Bold,
+            fontSize = 25.sp,
         )
     }
 }
