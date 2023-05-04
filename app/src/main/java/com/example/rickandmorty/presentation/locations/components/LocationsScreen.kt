@@ -24,7 +24,6 @@ import androidx.compose.ui.unit.dp
 import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
-import com.example.rickandmorty.domain.model.EpisodeModel
 import com.example.rickandmorty.domain.model.LocationModel
 import com.example.rickandmorty.presentation.characters.components.ListItem
 import com.example.rickandmorty.presentation.characters.components.SingleItem
