@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -39,20 +40,22 @@ fun SingleItem(
             .clickable { onClick() },
         contentAlignment = Alignment.BottomCenter
     ){
-        AsyncImage(
-            modifier = Modifier.fillMaxSize(),
-            model = imageUrl,
-            contentScale = ContentScale.Crop,
-            contentDescription = name,
-        )
-        Text(
-            modifier = Modifier.fillMaxWidth()
-                .padding(16.dp)
-                .background(color = Color.White)
-                .clip(RoundedCornerShape(16.dp)),
-            text = name,
-            fontWeight = FontWeight.Bold,
-            fontSize = 25.sp,
-        )
+        Row {
+            AsyncImage(
+                modifier = Modifier.fillMaxSize(),
+                model = imageUrl,
+                contentScale = ContentScale.Crop,
+                contentDescription = name,
+            )
+            Text(
+                modifier = Modifier.fillMaxWidth()
+                    .padding(16.dp)
+                    .background(color = Color.White)
+                    .clip(RoundedCornerShape(16.dp)),
+                text = name,
+                fontWeight = FontWeight.Bold,
+                fontSize = 25.sp,
+            )
+        }
     }
 }
