@@ -40,7 +40,7 @@ fun SingleItem(
             .clickable { onClick() },
         contentAlignment = Alignment.BottomCenter
     ){
-        Row {
+        Row() {
             AsyncImage(
                 modifier = Modifier.fillMaxSize(),
                 model = imageUrl,
@@ -48,10 +48,8 @@ fun SingleItem(
                 contentDescription = name,
             )
             Text(
-                modifier = Modifier.fillMaxWidth()
-                    .padding(16.dp)
-                    .background(color = Color.White)
-                    .clip(RoundedCornerShape(16.dp)),
+                modifier = Modifier
+                    .padding(16.dp),
                 text = name,
                 fontWeight = FontWeight.Bold,
                 fontSize = 25.sp,
