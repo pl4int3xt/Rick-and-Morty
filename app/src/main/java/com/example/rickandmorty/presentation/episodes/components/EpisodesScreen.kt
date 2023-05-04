@@ -88,6 +88,7 @@ fun EpisodeScreen(
                         items(episodes){ episode ->
                             if (episode!=null){
                                 SingleItem(
+                                    isCharacters = false,
                                     onClick = { onEvent(EpisodesScreenEvents.OnEpisodeClicked(episode.id.toString()))},
                                     item = ListItem(
                                         color = Color(

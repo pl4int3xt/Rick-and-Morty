@@ -24,7 +24,7 @@ import coil.compose.AsyncImage
 
 @Composable
 fun SingleItem(
-    isCharacters: Boolean? = false,
+    isCharacters: Boolean? = true,
     item: ListItem,
     imageUrl: String? = null,
     name: String,

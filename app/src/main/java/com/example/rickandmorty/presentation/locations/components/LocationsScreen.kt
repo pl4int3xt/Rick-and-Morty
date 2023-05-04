@@ -88,6 +88,7 @@ fun LocationScreen(
                         items(locations){ location ->
                             if (location!=null){
                                 SingleItem(
+                                    isCharacters = false,
                                     onClick = { onEvent(LocationsScreenEvents.OnLocationClicked(location.id.toString()))},
                                     item = ListItem(
                                         color = Color(
