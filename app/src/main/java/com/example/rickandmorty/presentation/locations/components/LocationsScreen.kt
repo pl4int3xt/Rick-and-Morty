@@ -25,6 +25,7 @@ import androidx.paging.LoadState
 import androidx.paging.compose.LazyPagingItems
 import androidx.paging.compose.items
 import com.example.rickandmorty.domain.model.EpisodeModel
+import com.example.rickandmorty.domain.model.LocationModel
 import com.example.rickandmorty.presentation.characters.components.ListItem
 import com.example.rickandmorty.presentation.characters.components.SingleItem
 import com.example.rickandmorty.presentation.locations.LocationsScreenEvents
@@ -40,7 +41,7 @@ fun LocationScreen(
     onNavigate: (UiEvents.OnNavigate) -> Unit,
     uiEvents: SharedFlow<UiEvents>,
     onEvent: (LocationsScreenEvents) -> Unit,
-    locations: LazyPagingItems<EpisodeModel>,
+    locations: LazyPagingItems<LocationModel>,
 ) {
     val context = LocalContext.current
     LaunchedEffect(key1 = true){
