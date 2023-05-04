@@ -1,4 +1,6 @@
 package com.example.rickandmorty.presentation.location_details
 
-class LocationDetailsEvents {
+sealed class LocationDetailsEvents {
+    object OnPopBackStack: LocationDetailsEvents()
+    object OnRefresh: LocationDetailsEvents()
 }
