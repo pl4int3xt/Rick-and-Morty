@@ -40,6 +40,10 @@ class EpisodesScreenViewModel @Inject constructor(
                     _uiEvents.emit(UiEvents.OnPopBackStack)
                 }
             }
+
+            EpisodesScreenEvents.OnRefresh -> {
+
+            }
         }
     }
 }
