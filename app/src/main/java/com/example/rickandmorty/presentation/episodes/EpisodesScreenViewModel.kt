@@ -9,12 +9,14 @@ import com.example.rickandmorty.data.mappers.toEpisodeModel
 import com.example.rickandmorty.data.remote.dto.EpisodeDto
 import com.example.rickandmorty.presentation.screens.Screens
 import com.example.rickandmorty.presentation.uiEvents.UiEvents
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class EpisodesScreenViewModel @Inject constructor(
     pager: Pager<Int, EpisodeDto>
 ): ViewModel() {
