@@ -37,6 +37,10 @@ class LocationsScreenViewModel @Inject constructor(
                                     + "/${locationsScreenEvents.id}"))
                 }
             }
+
+            LocationsScreenEvents.OnRefresh -> {
+
+            }
         }
     }
 }
