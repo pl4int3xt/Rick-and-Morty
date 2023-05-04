@@ -2,6 +2,7 @@ package com.example.rickandmorty.presentation.characters.components
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -34,13 +35,16 @@ fun SingleItem(
     Box(
         modifier = Modifier
             .height(200.dp)
-            .fillMaxWidth(0.5f)
+            .fillMaxWidth()
             .clip(RoundedCornerShape(16.dp))
             .background(color = item.color)
             .clickable { onClick() },
         contentAlignment = Alignment.BottomCenter
     ){
-        Row() {
+        Row(
+            modifier = Modifier.fillMaxWidth(),
+            horizontalArrangement = Arrangement.SpaceBetween
+        ) {
             AsyncImage(
                 modifier = Modifier.fillMaxSize(),
                 model = imageUrl,
