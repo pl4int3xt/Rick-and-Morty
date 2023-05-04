@@ -29,7 +29,7 @@ import coil.compose.AsyncImage
 @Composable
 fun SingleItem(
     item: ListItem,
-    imageUrl: String,
+    imageUrl: String? = null,
     name: String,
     onClick: () -> Unit
 ) {
