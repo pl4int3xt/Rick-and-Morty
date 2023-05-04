@@ -30,7 +30,7 @@ fun SingleItem(
 ) {
     Box(
         modifier = Modifier
-            .height(500.dp)
+            .height(350.dp)
             .clip(RoundedCornerShape(16.dp))
             .background(color = item.color)
             .clickable { onClick() },
