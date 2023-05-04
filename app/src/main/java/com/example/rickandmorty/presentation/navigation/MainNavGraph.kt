@@ -12,6 +12,8 @@ import com.example.rickandmorty.presentation.characters.CharactersViewModel
 import com.example.rickandmorty.presentation.characters.components.CharactersScreen
 import com.example.rickandmorty.presentation.episodes.EpisodesScreenViewModel
 import com.example.rickandmorty.presentation.episodes.components.EpisodeScreen
+import com.example.rickandmorty.presentation.locations.LocationsScreenViewModel
+import com.example.rickandmorty.presentation.locations.components.LocationScreen
 import com.example.rickandmorty.presentation.screens.Screens
 
 @Composable
@@ -53,7 +55,15 @@ fun MainNavGraph(
             )
         }
         composable(Screens.LocationScreen.route){
-
+            val viewModel: LocationsScreenViewModel = hiltViewModel()
+            val uiEvents = viewModel.uiEvents
+            val locations = viewModel.locations.collectAsLazyPagingItems()
+            LocationScreen(
+                onNavigate = { navHostController.navigate(it.route)},
+                uiEvents = uiEvents,
+                onEvent = viewModel::onEvent,
+                locations = locations
+            )
         }
     }
 }

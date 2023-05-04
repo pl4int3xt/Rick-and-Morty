@@ -27,7 +27,6 @@ import androidx.paging.compose.items
 import com.example.rickandmorty.domain.model.EpisodeModel
 import com.example.rickandmorty.presentation.characters.components.ListItem
 import com.example.rickandmorty.presentation.characters.components.SingleItem
-import com.example.rickandmorty.presentation.episodes.EpisodesScreenEvents
 import com.example.rickandmorty.presentation.locations.LocationsScreenEvents
 import com.example.rickandmorty.presentation.uiEvents.UiEvents
 import kotlinx.coroutines.flow.SharedFlow
