@@ -69,8 +69,7 @@ dependencies {
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
     //material
-//    implementation "androidx.compose.material:material:1.4.3"
-
+    implementation(libs.androidx.material)
 
     // Compose dependencies
     implementation (libs.androidx.lifecycle.viewmodel.compose)
