@@ -90,7 +90,6 @@ fun CharactersScreen(
                                 SingleItem(
                                     onClick = { onEvent(CharactersScreenEvents.OnNavigateToCharacterDetails(character.id.toString()))},
                                     item = ListItem(
-                                        height = Random.nextInt(100, 300).dp,
                                         color = Color(
                                             Random.nextLong(0xFFFFFFFF)
                                         ).copy(alpha = 1f),
