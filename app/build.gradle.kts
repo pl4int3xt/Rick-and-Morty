@@ -70,7 +70,6 @@ dependencies {
     debugImplementation(libs.ui.test.manifest)
     //material
     implementation(libs.androidx.material)
-
     // Compose dependencies
     implementation (libs.androidx.lifecycle.viewmodel.compose)
     implementation (libs.androidx.navigation.compose)
