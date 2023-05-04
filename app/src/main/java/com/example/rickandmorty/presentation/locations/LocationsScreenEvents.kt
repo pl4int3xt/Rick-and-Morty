@@ -1,4 +1,3 @@
 package com.example.rickandmorty.presentation.locations
 
-class LocationsScreenEvents {
-}
+sealed class LocationsScreenEvents
