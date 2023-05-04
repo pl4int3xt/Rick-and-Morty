@@ -40,5 +40,11 @@ fun MainNavGraph(
                 onEvent = viewModel::onEvent,
                 state = state)
         }
+        composable(Screens.EpisodeScreen.route){
+
+        }
+        composable(Screens.LocationScreen.route){
+
+        }
     }
 }
