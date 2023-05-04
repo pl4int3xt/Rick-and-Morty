@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -31,7 +32,8 @@ fun SingleItem(
 ) {
     Box(
         modifier = Modifier
-            .height(300.dp)
+            .height(200.dp)
+            .fillMaxWidth(0.5f)
             .clip(RoundedCornerShape(16.dp))
             .background(color = item.color)
             .clickable { onClick() },
