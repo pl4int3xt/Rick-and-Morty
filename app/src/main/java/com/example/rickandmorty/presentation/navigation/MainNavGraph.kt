@@ -2,7 +2,6 @@ package com.example.rickandmorty.presentation.navigation
 
 import androidx.compose.runtime.Composable
 import androidx.hilt.navigation.compose.hiltViewModel
-import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -11,6 +10,10 @@ import com.example.rickandmorty.presentation.character_details.CharacterDetailsV
 import com.example.rickandmorty.presentation.character_details.components.CharacterDetailsScreen
 import com.example.rickandmorty.presentation.characters.CharactersViewModel
 import com.example.rickandmorty.presentation.characters.components.CharactersScreen
+import com.example.rickandmorty.presentation.episodes.EpisodesScreenViewModel
+import com.example.rickandmorty.presentation.episodes.components.EpisodeScreen
+import com.example.rickandmorty.presentation.locations.LocationsScreenViewModel
+import com.example.rickandmorty.presentation.locations.components.LocationScreen
 import com.example.rickandmorty.presentation.screens.Screens
 
 @Composable
@@ -24,7 +27,7 @@ fun MainNavGraph(
         composable(Screens.CharactersScreen.route){
             val viewModel: CharactersViewModel = hiltViewModel()
             val uiEvents = viewModel.uiEvents
-            val characters = viewModel.getAllCharacters().collectAsLazyPagingItems()
+            val characters = viewModel.pagingFlow.collectAsLazyPagingItems()
             CharactersScreen(
                 onNavigate = { navHostController.navigate(it.route)},
                 uiEvents = uiEvents,
@@ -39,6 +42,28 @@ fun MainNavGraph(
             CharacterDetailsScreen(
                 onEvent = viewModel::onEvent,
                 state = state)
+        }
+        composable(Screens.EpisodeScreen.route){
+            val viewModel: EpisodesScreenViewModel = hiltViewModel()
+            val uiEvents = viewModel.uiEvents
+            val episodes = viewModel.episodes.collectAsLazyPagingItems()
+            EpisodeScreen(
+                onNavigate = { navHostController.navigate(it.route)},
+                uiEvents = uiEvents,
+                onEvent = viewModel::onEvent,
+                episodes = episodes
+            )
+        }
+        composable(Screens.LocationScreen.route){
+            val viewModel: LocationsScreenViewModel = hiltViewModel()
+            val uiEvents = viewModel.uiEvents
+            val locations = viewModel.locations.collectAsLazyPagingItems()
+            LocationScreen(
+                onNavigate = { navHostController.navigate(it.route)},
+                uiEvents = uiEvents,
+                onEvent = viewModel::onEvent,
+                locations = locations
+            )
         }
     }
 }

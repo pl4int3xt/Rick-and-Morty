@@ -5,6 +5,5 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.Dp
 
 data class ListItem(
-    val height: Dp,
     val color: Color
 )

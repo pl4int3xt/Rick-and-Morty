@@ -22,15 +22,13 @@ fun CharacterDetailsScreen(
     state: CharacterDetailsState
 ) {
     Scaffold {
-        Box {
+        Box(modifier = Modifier.fillMaxSize()) {
             if (state.isLoading){
                 CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
-                return@Box
             }
 
             if (state.error.isNotEmpty()){
                 Text(text = state.error)
-                return@Box
             }
 
             state.characterDetails?.let {
