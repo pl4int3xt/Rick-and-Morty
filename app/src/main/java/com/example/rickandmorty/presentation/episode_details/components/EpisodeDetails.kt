@@ -22,37 +22,37 @@ import com.example.rickandmorty.presentation.episode_details.EpisodeDetailsState
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EpisodeDetailsScreen(
-    episodeDetails: State<EpisodeDetailsState>,
+    episodeDetails: EpisodeDetailsState,
     onEvent: (EpisodeDetailsEvents) -> Unit
 ) {
     Scaffold {
         Box(modifier = Modifier.padding(top = it.calculateTopPadding())){
-            if (episodeDetails.value.isLoading){
+            if (episodeDetails.isLoading){
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
 
-            if (episodeDetails.value.message.isNotEmpty()){
+            if (episodeDetails.message.isNotEmpty()){
                 IconButton(onClick = { onEvent(EpisodeDetailsEvents.OnRefresh) }) {
                     Icon(imageVector = Icons.Rounded.Refresh, contentDescription = "refresh")
                 }
             }
 
-            if (episodeDetails.value.episodeModel != null){
+            if (episodeDetails.episodeModel != null){
                 LazyColumn{
                     item {
                         Column {
                             EpisodeCard(
-                                name = episodeDetails.value.episodeModel?.name?:"",
-                                episode = episodeDetails.value.episodeModel?.episode?:"",
-                                airDate = episodeDetails.value.episodeModel?.airDate?:"",
-                                url = episodeDetails.value.episodeModel?.url?:"",
-                                created = episodeDetails.value.episodeModel?.created?:"",
+                                name = episodeDetails.episodeModel.name,
+                                episode = episodeDetails.episodeModel.episode,
+                                airDate = episodeDetails.episodeModel.airDate,
+                                url = episodeDetails.episodeModel.url,
+                                created = episodeDetails.episodeModel.created,
                             )
                             EpisodeCard(
                                 isList = true,
-                                list = episodeDetails.value.episodeModel?.characters?: emptyList()
+                                list = episodeDetails.episodeModel.characters
                             )
                         }
                     }
