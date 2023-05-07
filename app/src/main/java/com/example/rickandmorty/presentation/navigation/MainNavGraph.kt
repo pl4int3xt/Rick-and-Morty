@@ -12,6 +12,8 @@ import com.example.rickandmorty.presentation.characters.CharactersViewModel
 import com.example.rickandmorty.presentation.characters.components.CharactersScreen
 import com.example.rickandmorty.presentation.episodes.EpisodesScreenViewModel
 import com.example.rickandmorty.presentation.episodes.components.EpisodeScreen
+import com.example.rickandmorty.presentation.location_details.LocationDetailsViewModel
+import com.example.rickandmorty.presentation.location_details.components.LocationDetailsScreen
 import com.example.rickandmorty.presentation.locations.LocationsScreenViewModel
 import com.example.rickandmorty.presentation.locations.components.LocationScreen
 import com.example.rickandmorty.presentation.screens.Screens
@@ -64,6 +66,17 @@ fun MainNavGraph(
                 onEvent = viewModel::onEvent,
                 locations = locations
             )
+        }
+        composable(Screens.LocationDetailsScreen.route){
+            val viewModel: LocationDetailsViewModel = hiltViewModel()
+            val locationDetails = viewModel.state.value
+            LocationDetailsScreen(
+                onEvent = viewModel::onEvent,
+                locationDetails = locationDetails
+            )
+        }
+        composable(Screens.EpisodeScreen.route){
+
         }
     }
 }

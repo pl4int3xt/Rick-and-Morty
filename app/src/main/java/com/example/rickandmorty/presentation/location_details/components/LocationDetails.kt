@@ -22,36 +22,36 @@ import com.example.rickandmorty.presentation.location_details.LocationDetailsSta
 @Composable
 fun LocationDetailsScreen(
     onEvent: (LocationDetailsEvents) -> Unit,
-    locationDetails: State<LocationDetailsState>
+    locationDetails: LocationDetailsState
 ) {
     Scaffold {
         Box(modifier = Modifier.padding(top = it.calculateTopPadding())){
-            if (locationDetails.value.isLoading){
+            if (locationDetails.isLoading){
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
                 )
             }
 
-            if (locationDetails.value.message.isNotEmpty()){
+            if (locationDetails.message.isNotEmpty()){
                 IconButton(onClick = { onEvent(LocationDetailsEvents.OnRefresh) }) {
                     Icon(imageVector = Icons.Rounded.Refresh, contentDescription = "refresh")
                 }
             }
 
-            if (locationDetails.value.locationModel != null){
+            if (locationDetails.locationModel != null){
                 LazyColumn{
                     item {
                         Column {
                             LocationCard(
-                                created = locationDetails.value.locationModel?.created?:"",
-                                dimension = locationDetails.value.locationModel?.dimension?:"",
-                                name = locationDetails.value.locationModel?.name?:"",
-                                type = locationDetails.value.locationModel?.type?:"",
-                                url = locationDetails.value.locationModel?.url?:""
+                                created = locationDetails.locationModel.created ,
+                                dimension = locationDetails.locationModel.dimension,
+                                name = locationDetails.locationModel.name,
+                                type = locationDetails.locationModel.type,
+                                url = locationDetails.locationModel.url
                             )
                             LocationCard(
                                 isList = true,
-                                residents = locationDetails.value.locationModel?.residents?: emptyList()
+                                residents = locationDetails.locationModel.residents
                             )
                         }
                     }
