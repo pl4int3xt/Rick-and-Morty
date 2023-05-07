@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import com.example.rickandmorty.common.Resource
 import com.example.rickandmorty.domain.use_case.GetLocationsDetailsUseCase
 import com.example.rickandmorty.presentation.uiEvents.UiEvents
+import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableSharedFlow
 import kotlinx.coroutines.flow.asSharedFlow
 import kotlinx.coroutines.flow.launchIn
@@ -16,6 +17,7 @@ import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
+@HiltViewModel
 class LocationDetailsViewModel @Inject constructor(
     private val getLocationsDetailsUseCase: GetLocationsDetailsUseCase,
     savedStateHandle: SavedStateHandle
