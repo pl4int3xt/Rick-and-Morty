@@ -51,6 +51,7 @@ fun EpisodeDetailsScreen(
                                 created = episodeDetails.value.episodeModel?.created?:"",
                             )
                             EpisodeCard(
+                                isList = true,
                                 list = episodeDetails.value.episodeModel?.characters?: emptyList()
                             )
                         }
