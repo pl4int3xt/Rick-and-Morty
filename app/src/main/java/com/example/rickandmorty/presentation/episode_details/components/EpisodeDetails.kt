@@ -2,6 +2,9 @@ package com.example.rickandmorty.presentation.episode_details.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -26,7 +29,10 @@ fun EpisodeDetailsScreen(
     onEvent: (EpisodeDetailsEvents) -> Unit
 ) {
     Scaffold {
-        Box(modifier = Modifier.padding(top = it.calculateTopPadding())){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ){
             if (episodeDetails.isLoading){
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
@@ -42,6 +48,9 @@ fun EpisodeDetailsScreen(
             if (episodeDetails.episodeModel != null){
                 LazyColumn{
                     item {
+                        Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+                    }
+                    item {
                         Column {
                             EpisodeCard(
                                 name = episodeDetails.episodeModel.name,
@@ -55,6 +64,9 @@ fun EpisodeDetailsScreen(
                                 list = episodeDetails.episodeModel.characters
                             )
                         }
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(it.calculateBottomPadding()))
                     }
                 }
             }

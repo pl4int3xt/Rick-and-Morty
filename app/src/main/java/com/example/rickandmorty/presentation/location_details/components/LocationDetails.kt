@@ -2,6 +2,9 @@ package com.example.rickandmorty.presentation.location_details.components
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
@@ -25,7 +28,10 @@ fun LocationDetailsScreen(
     locationDetails: LocationDetailsState
 ) {
     Scaffold {
-        Box(modifier = Modifier.padding(top = it.calculateTopPadding())){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ){
             if (locationDetails.isLoading){
                 CircularProgressIndicator(
                     modifier = Modifier.align(Alignment.Center)
@@ -41,6 +47,9 @@ fun LocationDetailsScreen(
             if (locationDetails.locationModel != null){
                 LazyColumn{
                     item {
+                        Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+                    }
+                    item {
                         Column {
                             LocationCard(
                                 created = locationDetails.locationModel.created ,
@@ -54,6 +63,9 @@ fun LocationDetailsScreen(
                                 residents = locationDetails.locationModel.residents
                             )
                         }
+                    }
+                    item {
+                        Spacer(modifier = Modifier.height(it.calculateBottomPadding()))
                     }
                 }
             }

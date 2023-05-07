@@ -17,7 +17,8 @@ fun Details(
     ElevatedCard(
         elevation = CardDefaults.elevatedCardElevation(
             defaultElevation = 10.dp
-        )
+        ),
+        modifier = Modifier.padding(16.dp)
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = characterModel.status)
