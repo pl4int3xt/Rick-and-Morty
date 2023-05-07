@@ -69,7 +69,7 @@ fun MainNavGraph(
                 locations = locations
             )
         }
-        composable(Screens.LocationDetailsScreen.route){
+        composable(Screens.LocationDetailsScreen.route + "/{id}"){
             val viewModel: LocationDetailsViewModel = hiltViewModel()
             val locationDetails = viewModel.state.value
             LocationDetailsScreen(
@@ -77,7 +77,7 @@ fun MainNavGraph(
                 locationDetails = locationDetails
             )
         }
-        composable(Screens.EpisodeDetailsScreen.route){
+        composable(Screens.EpisodeDetailsScreen.route + "/{id}"){
             val viewModel: EpisodeDetailsViewModel = hiltViewModel()
             val episodeDetails = viewModel.state.value
             EpisodeDetailsScreen(
