@@ -23,7 +23,6 @@ fun Image(
     Column(
         modifier = Modifier.fillMaxSize()
             .fillMaxWidth()
-            .clip(RoundedCornerShape(30.dp))
     ) {
         AsyncImage(
             modifier = Modifier.fillMaxWidth()

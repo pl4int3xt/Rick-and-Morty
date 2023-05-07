@@ -36,9 +36,6 @@ fun CharacterDetailsScreen(
                     item {
                         Image(imageUrl = it.image, name = it.name, origin = it.origin.name)
                     }
-                    item {
-                        Details(characterModel = it)
-                    }
                 }
             }
         }

@@ -2,8 +2,8 @@ package com.example.rickandmorty.presentation.character_details.components
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material3.OutlinedCard
+import androidx.compose.material3.CardDefaults
+import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -14,9 +14,10 @@ import com.example.rickandmorty.domain.model.CharacterModel
 fun Details(
     characterModel: CharacterModel
 ) {
-    OutlinedCard(
-        modifier = Modifier.padding(16.dp),
-        shape = RoundedCornerShape(16.dp)
+    ElevatedCard(
+        elevation = CardDefaults.elevatedCardElevation(
+            defaultElevation = 10.dp
+        )
     ) {
         Column(modifier = Modifier.padding(16.dp)) {
             Text(text = characterModel.status)
