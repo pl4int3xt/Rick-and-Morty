@@ -24,7 +24,8 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -106,4 +107,6 @@ dependencies {
     //pagination
     implementation (libs.androidx.paging.compose)
     implementation (libs.androidx.paging.runtime.ktx)
+
+    implementation (libs.accompanist.systemuicontroller)
 }

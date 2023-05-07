@@ -5,7 +5,10 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Refresh
@@ -64,7 +67,10 @@ fun CharactersScreen(
     }
 
     Scaffold {
-        Box(modifier = Modifier.fillMaxSize()){
+        Box(
+            modifier = Modifier
+                .fillMaxSize()
+        ){
             when (characters.loadState.refresh) {
                 is LoadState.Loading -> {
                     CircularProgressIndicator(modifier = Modifier.align(Alignment.Center))
@@ -85,6 +91,9 @@ fun CharactersScreen(
                         contentPadding = PaddingValues(16.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ){
+                        item {
+                            Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+                        }
                         items(characters){ character ->
                             if (character!=null){
                                 SingleItem(
@@ -102,6 +111,9 @@ fun CharactersScreen(
                             if (characters.loadState.append is LoadState.Loading){
                                 CircularProgressIndicator()
                             }
+                        }
+                        item {
+                            Spacer(modifier = Modifier.height(it.calculateBottomPadding()))
                         }
                     }
                 }
