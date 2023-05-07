@@ -5,7 +5,9 @@ import android.widget.Toast
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Refresh
@@ -85,6 +87,9 @@ fun EpisodeScreen(
                         contentPadding = PaddingValues(16.dp),
                         verticalArrangement = Arrangement.spacedBy(16.dp)
                     ){
+                        item {
+                            Spacer(modifier = Modifier.height(it.calculateTopPadding()))
+                        }
                         items(episodes){ episode ->
                             if (episode!=null){
                                 SingleItem(
@@ -104,6 +109,9 @@ fun EpisodeScreen(
                                     modifier = Modifier.align(Alignment.BottomCenter)
                                 )
                             }
+                        }
+                        item {
+                            Spacer(modifier = Modifier.height(it.calculateBottomPadding()))
                         }
                     }
                 }
