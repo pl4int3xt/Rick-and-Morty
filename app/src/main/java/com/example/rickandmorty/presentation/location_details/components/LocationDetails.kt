@@ -29,8 +29,7 @@ fun LocationDetailsScreen(
 ) {
     Scaffold {
         Box(
-            modifier = Modifier
-                .fillMaxSize()
+            modifier = Modifier.fillMaxSize()
         ){
             if (locationDetails.isLoading){
                 CircularProgressIndicator(
