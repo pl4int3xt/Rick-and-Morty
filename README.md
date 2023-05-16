@@ -1,0 +1,32 @@
+# Rick-and-Morty
+Rick and morty is Built with Jetpack Compose using https://rickandmortyapi.com/. The app follows mvvm clean architecture design pattern. The app also supports material 3
+dynamic color
+
+## **Screenshots**
+
+- #### Dynamic color Mode
+<img src="./screenshots/Rick7.jpg" width="320">&emsp;
+<img src="./screenshots/Rick1.jpg" width="320">&emsp;
+<img src="./screenshots/Rick2.jpg" width="320">&emsp;
+<img src="./screenshots/Rick3.jpg" width="320">&emsp;
+<img src="./screenshots/Rick4.jpg" width="320">
+<img src="./screenshots/Rick5.jpg" width="320">&emsp;
+<img src="./screenshots/Rick6.jpg" width="320">&emsp;
+
+## Tech Stack
+ - [Kotlin](https://kotlinlang.org/docs/reference/) - Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise
+ 
+ * [Jetpack Components:](https://developer.android.com/topic/architecture?gclid=Cj0KCQjw8O-VBhCpARIsACMvVLOH1satX45o9f4PMQ4Sxr7bG9myl6-KZL9nYda8PJsHV7m2uJL8bzgaAmqiEALw_wcB&gclsrc=aw.ds)
+    * [Jetpack Compose](https://developer.android.com/jetpack/compose?gclid=Cj0KCQjwhqaVBhCxARIsAHK1tiMMwHsxQ8Z25jyEdtLha9erq11wROoEfL6RqpGMprgbDTNuMO3_Ri8aAu5EEALw_wcB&gclsrc=aw.ds) -  Android’s modern toolkit for building native UI. It simplifies and accelerates UI development on Android
+    * [View Model](https://developer.android.com/topic/libraries/architecture/viewmodel)-  store and manage UI-related data in a lifecycle conscious way.
+    * [Lifecycle]( https://developer.android.com/topic/libraries/architecture/lifecycle) - Perform actions in response to a change in the lifecycle status of another component, such as activities and fragments.
+    * [Android KTX](https://developer.android.com/kotlin/ktx.html) - Android KTX is a set of Kotlin extensions that are included with Android Jetpack and other Android libraries. KTX extensions provide concise, idiomatic Kotlin to Jetpack, Android platform, and other APIs.
+
+- [Retrofit](https://github.com/square/retrofit)- A type-safe HTTP client for Android and Java.
+* [Dagger-Hilt](https://dagger.dev/hilt/)- a dependency injection library for Android that reduces the boilerplate of doing manual dependency injection in your project
+
+* [Coroutines](https://developer.android.com/kotlin/coroutines) - a concurrency design pattern that you can use on Android to simplify code that executes asynchronously
+* [Flow](https://developer.android.com/kotlin/flow)- In coroutines, a flow is a type that can emit multiple values sequentially, as opposed to suspend functions that return only a single value.
+* [Coil](https://coil-kt.github.io/coil/compose/) - Image Loader library.
+## Data Source
+This application fetches its data from the [Rick-And-Morty-API](https://rickandmortyapi.com/).
