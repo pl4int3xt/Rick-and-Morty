@@ -19,10 +19,6 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
-
-#hilt models
--keepnames @dagger.hilt.android.lifecycle.HiltViewModel class * extends androidx.lifecycle.ViewModel
-
 # JSR 305 annotations are for embedding nullability information.
 -dontwarn javax.annotation.**
 
@@ -38,4 +34,40 @@
 -dontwarn org.bouncycastle.**
 -dontwarn org.openjsse.**
 
--keepattributes *Annotation*
+# Hilt-related classes
+-keep class androidx.hilt.** { *; }
+-keep class dagger.hilt.** { *; }
+-keep class javax.inject.** { *; }
+
+# Hilt annotation classes
+-keepclasseswithmembers class * {
+    @dagger.hilt.* <methods>;
+}
+
+# Kotlin coroutines
+-keep class kotlin.coroutines.Continuation { *; }
+-keep class kotlin.coroutines.CoroutineContext { *; }
+-keep class kotlinx.coroutines.CoroutineExceptionHandler { *; }
+-keep class kotlinx.coroutines.Dispatchers { *; }
+-keep class kotlinx.coroutines.Job { *; }
+-keep class kotlinx.coroutines.flow.** { *; }
+
+# Keep ViewModel classes and their methods and fields
+-keep class * extends androidx.lifecycle.ViewModel {
+    <init>();
+}
+
+# Keep UseCase classes and their methods
+-keep class com.example.harrypotter.domain.use_case.** {
+    <init>();
+    public *;
+}
+
+# Keep Domain folder
+-keep class com.example.rickandmorty.domain.** {*;}
+
+# Keep Data folder
+-keep class com.example.rickandmorty.data.** {*;}
+
+# Keep Constants folder
+-keep class com.example.rickandmorty.common.** {*;}
