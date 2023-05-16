@@ -8,10 +8,10 @@ dynamic color
 <img src="./screenshots/Rick7.jpg" width="320">&emsp;
 <img src="./screenshots/Rick1.jpg" width="320">&emsp;
 <img src="./screenshots/Rick2.jpg" width="320">&emsp;
-<img src="./screenshots/Rick3.jpg" width="320">&emsp;
-<img src="./screenshots/Rick4.jpg" width="320">
-<img src="./screenshots/Rick5.jpg" width="320">&emsp;
 <img src="./screenshots/Rick6.jpg" width="320">&emsp;
+<img src="./screenshots/Rick5.jpg" width="320">&emsp;
+<img src="./screenshots/Rick4.jpg" width="320">&emsp;
+<img src="./screenshots/Rick3.jpg" width="320">
 
 ## Tech Stack
  - [Kotlin](https://kotlinlang.org/docs/reference/) - Kotlin is a cross-platform, statically typed, general-purpose programming language with type inference. Kotlin is designed to interoperate fully with Java, and the JVM version of Kotlin's standard library depends on the Java Class Library, but type inference allows its syntax to be more concise
